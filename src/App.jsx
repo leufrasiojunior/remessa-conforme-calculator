@@ -1,35 +1,110 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { formatter } from "./Components/Converter";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Tax-Calculator! Sua calculadora Aliexpress, Shein, Banggood...</h1>
+      <div className="container">
+        <form>
+        <div className="form-group">
+            <label htmlFor="dolvalue">Valor do Dolar: </label>
+            <input
+              type="text"
+              className="form-control"
+              id="dolvalue" 
+              placeholder={formatter.format(parseFloat(todaydolar.bid))}
+            />
+            <small>O valor é identificado altomaticamente. Caso queira trocar, insira o valor.</small>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="price">Digite o preço do produto</label>
+            <input
+              type="number"
+              className="form-control"
+              id="price"
+              value={price}
+              onChange={(e)=>{setPrice(e.target.value)}}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="shipping">
+              Digite o Valor do Frete
+            </label>
+            <input
+              type="number"
+              className="form-control"
+              id="shipping"
+              value={shippingvalue}
+              onChange={(i)=>{setShippingValue(i.target.value)}}
+            />
+            <small>Deixe em branco para Gratis</small>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="discount">Valor do desconto</label>
+            <input
+              type="number"
+              className="form-control"
+              id="discount"
+              value={discount}
+              onChange={(d)=>{setDiscount(d.target.value)}}
+            />
+            <small>Atualmente as compras do Aliexpress, o imposto é de acordo com o valor pago.</small>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="tax">Digite a taxa</label>
+            <input type="number" 
+            className="form-control" 
+            id="tax" 
+            value={tax}
+            onChange={(t)=>{setTax(t.target.value)}}
+            />
+          <small>Deixe em branco para o padrão de 17%</small>
+          </div>
+
+          <div className="showResults">
+          <p>Valor em Dólar: {exchangeDolar.format(dolarValue)}</p>
+          </div>
+
+          {/* <div className="form-group">
+            <label htmlFor="dol-amount">Valor em Dólar: </label>
+            <input
+              type="text"
+              className="form-control"
+              id="dol-amount"
+              disabled
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="tax-amount">Valor do Imposto ICMS: </label>
+            <input
+              type="text"
+              className="form-control"
+              id="tax-amount"
+              disabled
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="amount">Valor da a ser pago: </label>
+            <input type="text" 
+            className="form-control" 
+            id="amount" disabled />
+          </div> */}
+
+          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+            Calcular
+          </button>
+        </form>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
