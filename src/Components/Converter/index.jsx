@@ -10,3 +10,4 @@ const exchangeDolar = new Intl.NumberFormat('en-US', {
 
 
 export {formatter, exchangeDolar}
+

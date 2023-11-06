@@ -1,3 +1,3 @@
-import { formatter, exchangeDolar } from "./Converter/converter";
+import { formatter, exchangeDolar } from "./Converter/";
 
 export {exchangeDolar, formatter}
