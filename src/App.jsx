@@ -1,9 +1,11 @@
 import getExchange from './Components/ConectApi/api';
 import { useState, useEffect } from "react";
-import { formatter } from './Components';
+import { formatter, exchangeDolar } from './Components';
+
 
 function App() {
   const [todaydolar, setTodaydolar] = useState([]);
+  const [results, setResults] = useState(false);
   
   const exchange = async () => {
     await getExchange
@@ -17,14 +19,14 @@ function App() {
     };
     
     useEffect(() => {
-        exchange();
-      }, []);
-
-      const dataCalc = {
-        price:'',
-        shippingvalue:'',
-        discount:'',
-        tax:'',
+      exchange();
+    }, []);
+    
+    const dataCalc = {
+      price:'',
+      shippingvalue:'',
+      discount:'',
+      tax:'',
       }
 
 const [inputData, setInputData] = useState(dataCalc);
@@ -33,22 +35,50 @@ const handleData = (e) => {
   setInputData({ ...inputData, [e.target.name]: e.target.value })
 }
 
+
 const handleSubmit = (e) =>{
   e.preventDefault()
-  if (inputData.tax == 0)
-    {inputData.tax = 0.17}
-  else
-    {inputData.tax}
-    const productValue = inputData.price / todaydolar.bid
-    if (productValue <= 50){
-    // Menor que 50dol => Valor do produto  / (1-aliquota) * aliquota
+  setResults(true)
+  CalcPrice()
+}
+const CalcPrice = () =>{
+  //adjust Values
+  const realPrice = Number(inputData.price)
+  const realTax = Number(inputData.tax)
+  const taxImport = 60
+  priceTaxAmount = 0
+  //Preço em Dolar
+  if (inputData.tax.length === 0){
+    inputData.tax = 17
+  }
+  const priceValue = (inputData.price) / (todaydolar.bid)
+  
+  if (priceValue <50 ){
+    //Valor em Dólar priceValue
+    var icmsCalc = (realPrice) / ((1-(realTax/100)))*((realTax)/100)
+    var finalValue = (realPrice + icmsCalc)
+    console.log(priceTaxAmount)
+
   }
   else
   {
-    // const taxValue = ((inputData.price / (1-inputData.tax)) * inputData.tax)
+    var priceTaxAmount = realPrice * (taxImport)/100
+    var priceWithTax = priceTaxAmount + realPrice
+    var icmsCalc = (priceWithTax) / ((1-(realTax/100)))*((realTax)/100)
+    var finalValue = (priceWithTax + icmsCalc)
   }
-  }
-console.log(typeof(handleSubmit))
+
+
+  return (
+    <>
+    <p>Valor em Dólar: {exchangeDolar.format(parseFloat(priceValue))}</p>
+    {priceTaxAmount ? <p>Valor do Valor da Taxa de Importação: {formatter.format(parseFloat(priceTaxAmount))}</p> : null}
+    <p>Valor do ICMS: {formatter.format(parseFloat(icmsCalc))}</p>
+    <p>Valor total: {formatter.format(parseFloat(finalValue))}</p>
+    </>
+  )
+}
+
   return (
     <>
       <h1>Tax-Calculator! Sua calculadora Aliexpress, Shein, Banggood...</h1>
@@ -117,43 +147,15 @@ console.log(typeof(handleSubmit))
             />
           <small>Deixe em branco para o padrão de 17%</small>
           </div>
-
-          <div className="showResults">
-          <p>Valor em Dólar: </p>
-          </div>
-
-          {/* <div className="form-group">
-            <label htmlFor="dol-amount">Valor em Dólar: </label>
-            <input
-              type="text"
-              className="form-control"
-              id="dol-amount"
-              disabled
-            />  
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="tax-amount">Valor do Imposto ICMS: </label>
-            <input
-              type="text"
-              className="form-control"
-              id="tax-amount"
-              disabled
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="amount">Valor da a ser pago: </label>
-            <input type="text" 
-            className="form-control" 
-            id="amount" disabled />
-          </div> */}
-
           <button type="submit" className="btn btn-primary" 
           onClick={handleSubmit}>
             Calcular
           </button>
         </form>
+        
+        <div className="showResults">
+          {results ? <CalcPrice/> : null}
+          </div>
       </div>
 
     </>
