@@ -20,15 +20,16 @@ justify-content:center;
 `
 
 export const FormGroup = styled.form`
-    display:flex;
-    align-content: space-between;
-    justify-content:center;
-    flex-direction: row;
-    align-items: center;
-    border: 1px dotted #fefefe;
-    padding: 20px;
-    width: 80%;
-    height: 63%;
+  display:flex;
+  align-content: space-between;
+  justify-content:center;
+  flex-direction: row;
+  align-items: center;
+  border: 1px dotted #fefefe;
+  padding: 20px;
+  width: 80%;
+  height: 63%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 `
 
@@ -86,7 +87,8 @@ export const Button = styled.button`
   background-color: #212b46;
   border: 1px solid rgba(27, 31, 35, .15);
   border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  /* box-shadow: rgba(27, 31, 35, .1) 0 1px 0; */
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -104,6 +106,7 @@ export const Button = styled.button`
   touch-action: manipulation;
   vertical-align: middle;
   white-space: nowrap;
+  transition: .3s;
   &:focus:not(:focus-visible):not(.focus-visible) {
   box-shadow: none;
   outline: none;
@@ -133,16 +136,26 @@ width: 18%;
 `
 
 export const ShowResults = styled.div`
-    background-color: red;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
+  background-color: #b9b9b95e;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 70%;
+  color: #0f110ff4;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `
 
 export const ContainerResults = styled.div`
-width: 70%
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `
