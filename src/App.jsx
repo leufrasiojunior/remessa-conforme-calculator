@@ -10,8 +10,11 @@ import {
   Button,
   ContainerButton,
   ShowResults,
-  ContainerResults
+  ContainerResults,
+  CurrencyDiv
 } from "./styles/Styles";
+
+import {PiCurrencyDollarSimpleBold} from "react-icons/pi"
 
 function App() {
   const [todaydolar, setTodaydolar] = useState([]);
@@ -98,6 +101,8 @@ function App() {
         <FormGroup>
           <DivContainer>
             <label htmlFor="dolvalue">Valor do Dolar: </label>
+            <CurrencyDiv>
+            <PiCurrencyDollarSimpleBold style={{color: '#fefefe', fontSize: '15px'}}/>
             <Formcontrol
               type="text"
               className="form-control"
@@ -105,6 +110,7 @@ function App() {
               placeholder={formatter.format(parseFloat(todaydolar.bid))}
               disabled
             />
+            </CurrencyDiv>
             <small>O valor é identificado altomaticamente.</small>
           </DivContainer>
 

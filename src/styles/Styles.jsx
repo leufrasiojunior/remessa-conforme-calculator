@@ -159,3 +159,7 @@ export const ContainerResults = styled.div`
   justify-content: center;
   flex-direction: column;
 `
+
+export const CurrencyDiv = styled.div`
+width: 65%;
+`
