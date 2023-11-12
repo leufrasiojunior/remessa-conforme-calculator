@@ -14,7 +14,9 @@ import {
   CurrencyDiv
 } from "./styles/Styles";
 
-import {PiCurrencyDollarSimpleBold} from "react-icons/pi"
+import {PiCurrencyDollarSimpleBold, PiPercent} from "react-icons/pi"
+import {TbCurrencyReal} from "react-icons/tb"
+import {IoReceiptSharp} from "react-icons/io5"
 
 function App() {
   const [todaydolar, setTodaydolar] = useState([]);
@@ -95,14 +97,14 @@ function App() {
   return (
     <>
       <Title>
-        Tax-Calculator! Sua calculadora Aliexpress, Shein, Banggood...
+        Remessa Conforme Calculator<IoReceiptSharp/>
       </Title>
       <Container>
         <FormGroup>
           <DivContainer>
             <label htmlFor="dolvalue">Valor do Dolar: </label>
             <CurrencyDiv>
-            <PiCurrencyDollarSimpleBold style={{color: '#fefefe', fontSize: '15px'}}/>
+              <PiCurrencyDollarSimpleBold style={{color: '#fefefe', fontSize: '26px'}}/>
             <Formcontrol
               type="text"
               className="form-control"
@@ -116,6 +118,8 @@ function App() {
 
           <DivContainer>
             <label htmlFor="price">Digite o preço do produto: </label>
+            <CurrencyDiv>
+            <TbCurrencyReal style={{color: '#fefefe', fontSize: '26px'}}/>
             <Formcontrol
               type="number"
               className="form-control"
@@ -125,6 +129,7 @@ function App() {
               onChange={handleData}
               required
             />
+            </CurrencyDiv>
             <small>Valor em reais R$</small>
           </DivContainer>
 
@@ -159,6 +164,9 @@ function App() {
 
           <DivContainer>
             <label htmlFor="tax">Digite a taxa: </label>
+            <CurrencyDiv>
+
+            <PiPercent style={{color: '#fefefe', fontSize: '26px'}}/>
             <Formcontrol
               type="number"
               className="form-control"
@@ -166,7 +174,8 @@ function App() {
               id="tax"
               value={inputData.tax}
               onChange={handleData}
-            />
+              />
+              </CurrencyDiv>
             <small>Deixe em branco para o padrão de 17%</small>
           </DivContainer>
           <ContainerButton>
