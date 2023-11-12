@@ -40,7 +40,7 @@ align-items:center;
 align-content:center;
 padding-bottom: 10px;
 border-radius: 5px; */
-    width: 65%;
+  width: 87%;
     padding: 10px;
     border-radius: 10px;
     background-color:#414654;
@@ -145,7 +145,7 @@ export const ShowResults = styled.div`
   align-items: center;
   height: 100px;
   width: 70%;
-  color: #0f110ff4;
+  color: #FEFEFE;
   padding: 30px;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -158,4 +158,14 @@ export const ContainerResults = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+`
+
+export const CurrencyDiv = styled.div`
+  width: 65%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 9px;
 `
