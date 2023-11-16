@@ -6,6 +6,9 @@ export const Title = styled.h1`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    @media only screen and (max-width: 900px){
+  height: 110px;
+}
 `
 
 export const Container = styled.div`
@@ -16,7 +19,15 @@ align-content:center;
 width: 100vw;
 height: 60vh;
 justify-content:center;
+@media only screen and (max-width: 900px){
+  width: auto;
+  height: auto;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content:center;
 
+}
 `
 
 export const FormGroup = styled.form`
@@ -30,6 +41,10 @@ export const FormGroup = styled.form`
   width: 80%;
   height: 63%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  @media only screen and (max-width: 900px){
+  display: flex;
+  flex-direction:column;
+  }
 
 `
 
@@ -61,21 +76,21 @@ border-radius: 5px; */
 `
 
 export const DivContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: flex-start;
-    align-items: center;
-    width: 34%;
-    label{
-        padding-bottom: 21px;
-        /* margin-top: 9px; */
-        border: none;
-        display:flex;
-        font-size:20px;
-    }
-small{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  width: 34%;
+  label{
+    padding-bottom: 21px;
+    /* margin-top: 9px; */
+    border: none;
+    display:flex;
+    font-size:20px;
+  }
+  small{
     font-size: 10px;
 }
 `
@@ -158,6 +173,7 @@ export const ContainerResults = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
 `
 
 export const CurrencyDiv = styled.div`
